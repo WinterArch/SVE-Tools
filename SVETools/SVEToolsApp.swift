@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct SVEToolsApp: App {
+    /*
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -22,11 +23,14 @@ struct SVEToolsApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+     */
     var body: some Scene {
         WindowGroup {
-            ContentView()
+#if os(iOS)
+            EntranceIOSView()
+#else
+            EntranceMACView()
+#endif
         }
-        .modelContainer(sharedModelContainer)
     }
 }
